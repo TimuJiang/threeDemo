@@ -19,7 +19,7 @@
 
         init();
         animate();
-        var circle;
+        var circle,spotLight;
         function init() {
 
             var width = window.innerWidth;
@@ -45,12 +45,12 @@
             scene.add( circle );
             scene.add( mesh );
 
-            var ambientLight = new THREE.AmbientLight("#f2f2f2");//设置颜色
-            scene.add(ambientLight);
+//            var ambientLight = new THREE.AmbientLight("#f2f2f2");//设置颜色
+//            scene.add(ambientLight);
 
-            var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
-            directionalLight.position.set( 0, 1, 0 );
-            scene.add( directionalLight );
+//            var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+//            directionalLight.position.set( 0, 1, 0 );
+//            scene.add( directionalLight );
 
 
 //            var pointColor = "#ffffff";
@@ -62,17 +62,19 @@
 //            pointLight.intensity = 1;
 //            scene.add(pointLight);
 
-            var pointColor = "#0000ff";
-            var spotLight = new THREE.SpotLight(pointColor,2,500);
-            spotLight.position.set(100, 100, 100);
+            var pointColor = "#ffffff";
+            spotLight = new THREE.SpotLight(pointColor,4,1000);
+            spotLight.position.set(500, 500,500);
             spotLight.castShadow = true;
             spotLight.shadowCameraNear = 2;
-            spotLight.shadowCameraFar = 200;
+            spotLight.shadowCameraFar = 1000;
             spotLight.shadowCameraFov = 10;
-            spotLight.target = circle;
-            spotLight.angle = 0.4;
-            spotLight.shadowCameraVisible=true;
+           // spotLight.target = circle;
+            spotLight.angle = 1.05;
             scene.add(spotLight);
+
+            var spotLightHelper = new THREE.SpotLightHelper( spotLight );
+            scene.add( spotLightHelper );
 
             var axisHelper = new THREE.AxisHelper( 1000 );
             scene.add( axisHelper );

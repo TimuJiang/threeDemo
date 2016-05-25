@@ -26,18 +26,18 @@
             var height = window.innerHeight;
             scene = new THREE.Scene();
            // camera = new THREE.OrthographicCamera(width / - 2,width / 2,height / 2,height / - 2,1,10000);
-            camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+            camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
 
-            camera.position.z = 1000;
-            camera.position.x = 1000;
-            camera.position.y = 1000;
+            camera.position.z = 100;
+            camera.position.x = 100;
+            camera.position.y = 100;
             camera.lookAt(new THREE.Vector3(0,0,0));
-            geometry = new THREE.BoxGeometry( 100, 100, 100 );
+            geometry = new THREE.BoxGeometry( 10, 10, 10 );
             material = new THREE.MeshLambertMaterial( { color: 0xf2f2f2} );
             mesh = new THREE.Mesh( geometry, material );
-            mesh.position.y = 51;
+            mesh.position.y = 5;
             mesh.castShadow = true;
-            var circleGeometry = new THREE.CircleGeometry( 300, 32 );
+            var circleGeometry = new THREE.CircleGeometry( 200, 32 );
             var circleMaterial = new THREE.MeshLambertMaterial({ color: 0xf2f2f2});
             circle = new THREE.Mesh( circleGeometry, circleMaterial );
             circle.rotation.x += -Math.PI/2;
@@ -63,25 +63,25 @@
 //            scene.add(pointLight);
 
             var pointColor = "#ffffff";
-            spotLight = new THREE.SpotLight(pointColor,4,1000);
-            spotLight.position.set(500, 500,500);
+            spotLight = new THREE.SpotLight(pointColor,1,150);
+            spotLight.position.set(60, 80,40);
             spotLight.castShadow = true;
             spotLight.shadowCameraNear = 2;
-            spotLight.shadowCameraFar = 1000;
-            spotLight.shadowCameraFov = 10;
-           // spotLight.target = circle;
-            spotLight.angle = 1.05;
+            spotLight.shadowCameraFar = 200;
+            spotLight.shadowCameraFov = 20;
+//            spotLight.target = mesh;
+            spotLight.angle = 0.2;
             scene.add(spotLight);
 
             var spotLightHelper = new THREE.SpotLightHelper( spotLight );
             scene.add( spotLightHelper );
 
-            var axisHelper = new THREE.AxisHelper( 1000 );
+            var axisHelper = new THREE.AxisHelper( 100 );
             scene.add( axisHelper );
 
             renderer = new THREE.WebGLRenderer({antialias:true});
             renderer.setSize( window.innerWidth, window.innerHeight );
-            renderer.setClearColor("#ffffff")
+           // renderer.setClearColor("#ffffff")
             renderer.shadowMapEnabled=true;
 
             document.body.appendChild( renderer.domElement );
@@ -90,7 +90,7 @@
 
         function animate() {
             requestAnimationFrame( animate );
-           // mesh.rotation.x += 0.01;
+            mesh.position.x += 0.2;
            // mesh.rotation.y += 0.01;
            // circle.rotation.x += 0.01;
            // mesh.rotation.z += 0.01;

@@ -5834,6 +5834,7 @@ LIGHTS.TerrainPlane.prototype.resetVertices = function() {
 	this.computeFaceNormals();
     this.computeVertexNormals();
 };
+
 /**
  * Created by JetBrains WebStorm.
  * User: C4RL05

@@ -36,24 +36,23 @@
             camera.position.y = 100;
             camera.lookAt(new THREE.Vector3(0,0,0));
 
-
             var planeGeometry = new THREE.PlaneGeometry( 300,300,299,299);
             var row,col;
             var onz;
             for (var i = 0, l = planeGeometry.vertices.length; i < l; i++) {
-                col = i%300;
-                row = Math.floor(i/300);
-                onz =  Math.sin(0.05*col)*40 + Math.cos(0.05*row)*40;
-               planeGeometry.vertices[i].z = onz;
+//                col = i%300;
+//                row = Math.floor(i/300);
+//                onz =  Math.sin(0.05*col)*40 + Math.cos(0.05*row)*40;
+//               planeGeometry.vertices[i].z = onz;
             }
 
-            var planeMaterial = new THREE.MeshLambertMaterial({ color: 0xf2f2f2,wireframe: true});
+            var planeMaterial = new THREE.MeshLambertMaterial({ color: 0xf2f2f2,wireframe: false});
             var planeMesh = new THREE.Mesh( planeGeometry, planeMaterial );
             planeMesh.receiveShadow= true;
             planeMesh.rotation.x = -Math.PI/2;
 
             geometry = new THREE.BoxGeometry( 10, 10, 10 );
-            material = new THREE.MeshLambertMaterial( { color: 0xf2f2f2,} );
+            material = new THREE.MeshLambertMaterial( { color: 0xf2f2f2,color: 0xfff2f2,} );
             mesh = new THREE.Mesh( geometry, material );
             mesh.position.y = 5;
             mesh.castShadow = true;
@@ -72,9 +71,13 @@
             spotLight = new THREE.SpotLight(pointColor,1,150);
             spotLight.position.set(60, 80,40);
             spotLight.castShadow = true;
-            spotLight.shadowCameraNear = 2;
-            spotLight.shadowCameraFar = 200;
-            spotLight.shadowCameraFov = 20;
+            spotLight.shadow.camera.near = 0.1;
+            spotLight.shadow.camera.far = 200;
+            spotLight.shadow.camera.fov = 200;
+            //spotLight.shadow.shadowMap.enabled = true;
+            spotLight.shadow.mapSize.height = 600;
+            spotLight.shadow.mapSize.width = 600;
+
             spotLight.angle = 0.2;
             scene.add(spotLight);
 

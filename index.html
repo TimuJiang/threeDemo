@@ -6,6 +6,7 @@
     <script src="js/lib/three.js"></script>
     <script src="js/controller/TrackballControls.js"></script>
     <script src="js/demo.js"></script>
+    <script src="loader/TerrainLoader.js"></script>
     <script src="js/map/TerrainPlane.js"></script>
     <style>
         html,body{width: 100%; height: 100%}
@@ -109,6 +110,11 @@
            // circle.rotation.x += 0.01;
             renderer.render( scene, camera );
         }
+
+        var terrainLoader = new THREE.TerrainLoader();
+        terrainLoader.loadPNG2('images/terrain.png', function(data) {
+            console.log(data);
+        });
 
     </script>
 </body>

@@ -20145,7 +20145,7 @@ THREE.CubeTextureLoader.prototype = {
 /**
  * @author Nikos M. / https://github.com/foo123/
  *
- * Abstract Base class to load generic binary textures formats (rgbe, hdr, ...)
+ * Abstract Base class to loader generic binary textures formats (rgbe, hdr, ...)
  */
 
 THREE.DataTextureLoader = THREE.BinaryTextureLoader = function ( manager ) {
@@ -26547,7 +26547,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 			}
 
-			// load material specific uniforms
+			// loader material specific uniforms
 			// (shader material also gets them for the sake of genericity)
 
 			if ( material instanceof THREE.ShaderMaterial ||
@@ -27366,7 +27366,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 					} else {
 
-						console.warn( "THREE.WebGLRenderer: Attempt to load unsupported compressed texture format in .uploadTexture()" );
+						console.warn( "THREE.WebGLRenderer: Attempt to loader unsupported compressed texture format in .uploadTexture()" );
 
 					}
 
@@ -27587,7 +27587,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 								} else {
 
-									console.warn( "THREE.WebGLRenderer: Attempt to load unsupported compressed texture format in .setTextureCube()" );
+									console.warn( "THREE.WebGLRenderer: Attempt to loader unsupported compressed texture format in .setTextureCube()" );
 
 								}
 
@@ -33533,7 +33533,7 @@ Object.defineProperties( THREE.WebGLRenderTarget.prototype, {
 
 Object.assign( THREE.Audio.prototype, {
 	load: function ( file ) {
-		console.warn( 'THREE.Audio: .load has been deprecated. Please use THREE.AudioLoader.' );
+		console.warn( 'THREE.Audio: .loader has been deprecated. Please use THREE.AudioLoader.' );
 		var scope = this;
 		var audioLoader = new THREE.AudioLoader();
 		audioLoader.load( file, function ( buffer ) {
